@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project ต้นแบบ 4: Morning Whisper AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 25px; /* Padding for the body of this iframe content */
+            background-color: #f8f9fa; /* Light background for the overall prototype page */
+        }
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: #e67e22; /* Orange accent for main prototype title */
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            color: #34495e;
+            text-align: left;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+        p {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        .section-description {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .feature-card {
+            background-color: #e0f7fa; /* Light cyan for this project's features */
+            border: 1px solid #a7e0e7;
+            border-left: 5px solid #00bcd4;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .feature-card i {
+            font-size: 2.5em;
+            color: #00bcd4; /* Cyan for icons */
+            flex-shrink: 0;
+        }
+        .feature-card .text-content strong {
+            display: block;
+            font-size: 1.1em;
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+        .feature-card .text-content p {
+            font-size: 0.85em;
+            color: #555;
+            margin: 0;
+        }
+
+        /* --- UI Mockup Styles (consistent with previous phases) --- */
+        .ui-mockup-section {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .ui-mockup-section:nth-of-type(odd) { background-color: #eef4f7; }
+        .ui-mockup-section:nth-of-type(even) { background-color: #f8f8f8; }
+
+        .ui-mockup-box {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .ui-header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+        }
+        .ui-header .app-name {
+            font-size: 1.2em;
+        }
+        .ui-content {
+            padding: 15px;
+            min-height: 150px;
+            color: #555;
+            font-size: 0.95em;
+        }
+        .ui-content strong {
+            color: #333;
+        }
+        .ui-content .data-row {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        .ui-content .data-row:last-child {
+            border-bottom: none;
+        }
+        .ui-content .placeholder-text {
+            color: #777;
+            font-style: italic;
+            text-align: center;
+            margin-top: 50px;
+        }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: 600; }
+        
+        /* --- Chart and Workflow HTML Mockup Styles --- */
+        .chart-container-html {
+            width: 100%;
+            height: 150px; /* Consistent height for charts */
+            background-color: #fcfcfc;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+            overflow: hidden;
+            margin: 10px auto;
+        }
+        .chart-line-point-html {
+            position: absolute;
+            width: 10px; height: 10px;
+            background-color: #e67e22; /* Orange point */
+            border-radius: 50%;
+            transform: translateX(-50%) translateY(50%); /* Center the circle */
+            z-index: 10;
+        }
+        .chart-line-point-html::before { /* Value label */
+            content: attr(data-value);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7em;
+            color: #333;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .chart-line-point-html::after { /* X-axis label */
+            content: attr(data-label);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7em;
+            color: #777;
+            white-space: nowrap;
+        }
+        .chart-line-segment-html {
+            position: absolute;
+            height: 2px;
+            background-color: #3498db; /* Blue line */
+            transform-origin: 0 0;
+            z-index: 8;
+        }
+
+        .heatmap-grid-html { /* Re-used for Customer Path Heatmap */
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 columns for a simple grid */
+            width: 100%;
+            height: 150px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            gap: 1px;
+        }
+        .heatmap-cell-html {
+            background-color: rgba(255,255,255,0.8); /* Low traffic */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            color: #555;
+            text-align: center;
+            padding: 5px;
+        }
+        .heatmap-cell-html.low { background-color: #e6ffe6; } /* Green - low */
+        .heatmap-cell-html.medium { background-color: #fffbe6; } /* Yellow - medium */
+        .heatmap-cell-html.high { background-color: #ffe6e6; } /* Red - high */
+
+        .workflow-diagram-html {
+            width: 100%;
+            height: 250px; /* Fixed height for diagram */
+            background-color: #f0f8ff; /* Light blue background */
+            border: 1px dashed #aed6f1;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            color: #333;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .workflow-node {
+            background-color: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .workflow-arrow {
+            color: #555;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="phase-section">
+        <h3><i class="fas fa-comment-dots"></i> Project ต้นแบบ 4: ระบบสรุปข้อมูลอัจฉริยะ 'พรายกระซิบยามเช้า'</h3>
+        <p class="section-description">
+            โครงการนี้พัฒนา AI Automation เพื่อรวบรวมและสรุปข้อมูลสำคัญประจำวันจากแหล่งต่างๆ
+            พร้อมส่งแจ้งเตือนส่วนบุคคลในตอนเช้า เพื่อช่วยในการตัดสินใจและเตรียมพร้อมสำหรับวันใหม่.
+        </p>
+
+        <h4><i class="fas fa-check-double"></i> ฟังก์ชันการทำงานหลัก (Features)</h4>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-cloud-download-alt"></i>
+                <div class="text-content">
+                    <strong>Automated Data Aggregation</strong>
+                    <p>ดึงและรวมข้อมูลจาก Loyverse, vTiger CRM, Google Calendar, และแหล่งอื่นๆ อัตโนมัติ.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-at"></i>
+                <div class="text-content">
+                    <strong>Personalized Daily Digest</strong>
+                    <p>สรุปข้อมูลที่สำคัญที่สุดสำหรับผู้ใช้แต่ละคน และจัดส่งในรูปแบบส่วนบุคคล.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bell"></i>
+                <div class="text-content">
+                    <strong>Customizable Notification Channels</strong>
+                    <p>เลือกช่องทางการแจ้งเตือนได้ (Line Notify, Email) พร้อมตั้งเวลาส่งอัตโนมัติ.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-lightbulb"></i>
+                <div class="text-content">
+                    <strong>Proactive Insights & Alerts</strong>
+                    <p>ระบบแจ้งเตือนเชิงรุก เช่น มีนัดสำคัญ, สินค้าใกล้หมดสต็อก, ลูกค้า VIP เข้ามา.</p>
+                </div>
+            </div>
+        </div>
+
+        <h4><i class="fas fa-bezier-curve"></i> ตัวอย่างหน้าจอ UI</h4>
+
+        <div class="ui-mockup-section">
+            <h4>Daily Digest Preview (ตัวอย่างสรุปข้อมูลประจำวัน)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-envelope-open-text"></i> สรุปข้อมูล "พรายกระซิบยามเช้า"</span>
+                    <i class="fas fa-calendar-alt"></i> 2025-08-02
+                </div>
+                <div class="ui-content">
+                    <div class="digest-preview">
+                        <div class="header">
+                            <i class="fas fa-sun"></i> สวัสดีครับคุณธีรชัย! สรุปข้อมูลสำหรับวันนี้:
+                        </div>
+                        <div class="digest-section">
+                            <strong><i class="fas fa-dollar-sign"></i> ยอดขายเมื่อวาน (Loyverse):</strong>
+                            <ul>
+                                <li>ยอดรวม: <span style="font-weight:bold; color:#28a745;">12,500 บาท</span></li>
+                                <li>ลูกค้าใหม่: 5 ราย</li>
+                            </ul>
+                        </div>
+                        <div class="digest-section">
+                            <strong><i class="fas fa-calendar-check"></i> นัดหมาย/กิจกรรมสำคัญวันนี้ (vTiger/Calendar):</strong>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 10:00 น. นัดลูกค้าคุณสมศักดิ์ (vTiger CRM)</li>
+                                <li><i class="fas fa-check"></i> 14:00 น. ประชุมทีม (Google Calendar)</li>
+                            </ul>
+                        </div>
+                        <div class="digest-section">
+                            <strong><i class="fas fa-exclamation-triangle"></i> แจ้งเตือนสำคัญ:</strong>
+                            <ul>
+                                <li class="alert-item">สินค้ากาแฟสดเม็ด (P-001) สต็อกต่ำ: เหลือ 8 หน่วย!</li>
+                                <li class="alert-item">ใบสั่งซื้อ SO-00005 ค้างชำระ</li>
+                            </ul>
+                        </div>
+                        <div class="digest-footer">
+                            Powered by AI Automation (n8n & Google App Script)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-mockup-section">
+            <h4>Notification Preferences (ตั้งค่าการแจ้งเตือน)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-sliders-h"></i> ตั้งค่าแจ้งเตือน 'พรายกระซิบยามเช้า'</span>
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div class="ui-content settings-form">
+                    <div class="form-group">
+                        <label for="delivery-time"><i class="fas fa-clock"></i> เวลาที่ต้องการรับสรุป:</label>
+                        <input type="time" id="delivery-time" value="07:00">
+                    </div>
+                    <div class="form-group">
+                        <label for="channel"><i class="fas fa-share-alt"></i> ช่องทางการแจ้งเตือน:</label>
+                        <select id="channel">
+                            <option value="line">Line Notify</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-clipboard-list"></i> เลือกข้อมูลที่ต้องการรับ:</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" checked> ยอดขายประจำวัน</label>
+                            <label><input type="checkbox" checked> นัดหมาย/กิจกรรม</label>
+                            <label><input type="checkbox" checked> แจ้งเตือนสต็อกต่ำ</label>
+                            <label><input type="checkbox"> รายการค้างชำระ</label>
+                            <label><input type="checkbox"> ลูกค้า VIP (เข้า-ออก)</label>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button><i class="fas fa-save"></i> บันทึกการตั้งค่า</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-mockup-section">
+            <h4>Sales Prediction Chart (กราฟทำนายยอดขาย)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-chart-line"></i> AI Sales Forecast</span>
+                    <i class="fas fa-magic"></i>
+                </div>
+                <div class="ui-content">
+                    <p style="font-weight:bold; text-align:center; margin-bottom:15px;">ยอดขายที่คาดการณ์ (ไตรมาสถัดไป)</p>
+                    <div class="chart-container-html" style="height:150px;">
+                        <div class="chart-line-point-html" style="left: 10%; bottom: 40px;" data-value="100K" data-label="Q1"></div>
+                        <div class="chart-line-point-html" style="left: 30%; bottom: 60px;" data-value="120K" data-label="Q2"></div>
+                        <div class="chart-line-point-html" style="left: 50%; bottom: 90px;" data-value="150K" data-label="Q3"></div>
+                        <div class="chart-line-point-html" style="left: 70%; bottom: 120px;" data-value="180K" data-label="Q4"></div>
+                        <div class="chart-line-point-html" style="left: 90%; bottom: 140px;" data-value="200K" data-label="Q1(F)"></div>
+
+                        <div class="chart-line-segment-html" style="left: 10%; top: calc(150px - 40px - 1px); width: 20%; transform: rotate(10deg);"></div> 
+                        <div class="chart-line-segment-html" style="left: 30%; top: calc(150px - 60px - 1px); width: 20%; transform: rotate(15deg);"></div>
+                        <div class="chart-line-segment-html" style="left: 50%; top: calc(150px - 90px - 1px); width: 20%; transform: rotate(15deg);"></div>
+                        <div class="chart-line-segment-html" style="left: 70%; top: calc(150px - 120px - 1px); width: 20%; transform: rotate(10deg);"></div>
+                        <p style="position:absolute; bottom:5px; width:100%; text-align:center; font-size:0.8em; color:#777;">(F) = Forecast</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ui-mockup-section">
+            <h4>Data Source Connection Status (สถานะการเชื่อมต่อข้อมูล)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-link"></i> Data Integrations with n8n</span>
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="ui-content" style="min-height:200px;">
+                    <div class="workflow-diagram-html" style="height:180px; background-color:#e0f7fa;">
+                        <div class="workflow-node" style="background-color:#00bcd4;">Loyverse API</div>
+                        <i class="fas fa-arrow-down workflow-arrow"></i>
+                        <div class="workflow-node" style="background-color:#8e44ad;">n8n Processing</div>
+                        <i class="fas fa-arrow-down workflow-arrow"></i>
+                        <div class="workflow-node" style="background-color:#3498db;">vTiger CRM</div>
+                        <i class="fas fa-arrow-down workflow-arrow"></i>
+                        <div class="workflow-node" style="background-color:#28a745;">Google Sheet / AppSheet</div>
+                    </div>
+                    <p class="placeholder-text" style="margin-top:20px;">เชื่อมต่อข้อมูลผ่าน n8n Automation</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function sendHeightToParent() {
+            const body = document.body;
+            const height = body.scrollHeight; 
+            if (window.parent && window.parent.postMessage) {
+                window.parent.postMessage({ 
+                    type: 'iframeHeight', 
+                    height: height, 
+                    iframeId: window.name 
+                }, '*'); 
+            }
+        }
+        window.addEventListener('load', sendHeightToParent);
+        window.addEventListener('resize', sendHeightToParent);
+        setTimeout(sendHeightToParent, 500); // Also send after a small delay
+    </script>
+</body>
+</html>

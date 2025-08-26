@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project ต้นแบบ 3: Smart Waste Bank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 25px; /* Padding for the body of this iframe content */
+            background-color: #f8f9fa; /* Light background for the overall prototype page */
+        }
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: #e67e22; /* Orange accent for main prototype title */
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            color: #34495e;
+            text-align: left;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+        p {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        .section-description {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .feature-card {
+            background-color: #e8f5e9; /* Light green for this project's features */
+            border: 1px solid #a5d6a7;
+            border-left: 5px solid #28a745;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .feature-card i {
+            font-size: 2.5em;
+            color: #28a745; /* Green for icons */
+            flex-shrink: 0;
+        }
+        .feature-card .text-content strong {
+            display: block;
+            font-size: 1.1em;
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+        .feature-card .text-content p {
+            font-size: 0.85em;
+            color: #555;
+            margin: 0;
+        }
+
+        /* --- UI Mockup Styles (consistent with previous phases) --- */
+        .ui-mockup-section {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .ui-mockup-section:nth-of-type(odd) { background-color: #eef4f7; }
+        .ui-mockup-section:nth-of-type(even) { background-color: #f8f8f8; }
+
+        .ui-mockup-box {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .ui-header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+        }
+        .ui-header .app-name {
+            font-size: 1.2em;
+        }
+        .ui-content {
+            padding: 15px;
+            min-height: 150px;
+            color: #555;
+            font-size: 0.95em;
+        }
+        .ui-content strong {
+            color: #333;
+        }
+        .ui-content .data-row {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        .ui-content .data-row:last-child {
+            border-bottom: none;
+        }
+        .ui-content .placeholder-text {
+            color: #777;
+            font-style: italic;
+            text-align: center;
+            margin-top: 50px;
+        }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: 600; }
+        
+        /* Line OA specific styles */
+        .phone-frame {
+            width: 300px; /* Standard phone width */
+            height: 550px; /* Standard phone height */
+            border: 10px solid #333;
+            border-radius: 25px;
+            background-color: black;
+            margin: 20px auto;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .line-header {
+            background-color: #00b900; /* Line Green */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .line-chat-area {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .line-message {
+            max-width: 80%;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+        .line-message.user {
+            background-color: #cce5ff; /* Light blue bubble */
+            align-self: flex-end;
+        }
+        .line-message.bot {
+            background-color: #e6e6e6; /* Light gray bubble */
+            align-self: flex-start;
+        }
+        .line-input-area {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .line-button {
+            background-color: #00b900;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* --- HTML PIE CHART STYLES (for Waste Data Analytics) --- */
+        .pie-chart-container {
+            width: 150px; /* Size of the pie chart */
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #3498db 0% 40%, /* Plastics - 40% */
+                #2ecc71 40% 70%, /* Paper - 30% */
+                #e67e22 70% 85%, /* Glass - 15% */
+                #9b59b6 85% 95%, /* Metals - 10% */
+                #f1c40f 95% 100%  /* Others - 5% */
+            );
+            margin: 20px auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .pie-legend {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+        .pie-legend li {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .pie-legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="phase-section">
+        <h3><i class="fas fa-recycle"></i> Project ต้นแบบ 3: ระบบจัดการธนาคารขยะอัจฉริยะ (Waste Bank) ด้วย Line OA AI</h3>
+        <p class="section-description">
+            โครงการนี้พัฒนาโซลูชันสำหรับธนาคารขยะ โดยใช้ Line Official Account (Line OA) เป็นช่องทางหลัก
+            ในการสื่อสารกับสมาชิก และใช้ AI Automation เพื่อจัดการข้อมูลและกระบวนการ.
+        </p>
+
+        <h4><i class="fas fa-check-double"></i> ฟังก์ชันการทำงานหลัก (Features)</h4>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fab fa-line"></i>
+                <div class="text-content">
+                    <strong>Line OA User Interface</strong>
+                    <p>สมาชิกธนาคารขยะสามารถแจ้งข้อมูลขยะ, สอบถามยอดสะสม, และรับข่าวสารผ่าน Line OA.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <div class="text-content">
+                    <strong>Automated Data Processing</strong>
+                    <p>ข้อมูลที่สมาชิกแจ้งผ่าน Line OA ถูกบันทึกและคำนวณยอดสะสมอัตโนมัติด้วย n8n/AppScript.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-pie"></i>
+                <div class="text-content">
+                    <strong>Waste Data Analytics</strong>
+                    <p>แสดงสถิติประเภทและปริมาณขยะที่รวบรวมได้ใน AppSheet/Google Sheet Dashboard.</p>
+                *</div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bell"></i>
+                <div class="text-content">
+                    <strong>Personalized Notifications</strong>
+                    <p>แจ้งเตือนสมาชิกอัตโนมัติ (ยอดสะสม, โปรโมชั่น, กิจกรรม) ผ่าน Line Notify หรือ Email.</p>
+                </div>
+            </div>
+        </div>
+
+        <h4><i class="fas fa-bezier-curve"></i> ตัวอย่างหน้าจอ UI</h4>
+
+        <div class="ui-mockup-section">
+            <h4>Line OA (การแจ้งข้อมูลและตรวจสอบยอดสะสม)</h4>
+            <div class="ui-mockup-box">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="line-header">ธนาคารขยะชุมชน</div>
+                        <div class="line-chat-area">
+                            <div class="line-message bot">สวัสดีครับ! ยินดีต้อนรับสู่ธนาคารขยะชุมชน มีอะไรให้ช่วยครับ?</div>
+                            <div class="line-message user">แจ้งขยะ</div>
+                            <div class="line-message bot">โปรดระบุประเภทและน้ำหนัก (เช่น ขวดพลาสติก 2 กก.)</div>
+                            <div class="line-message user">ขวดพลาสติก 5 กก.</div>
+                            <div class="line-message bot">รับทราบครับ! คุณแจ้งขวดพลาสติก 5 กก. ยอดสะสมของคุณตอนนี้ 1500 แต้ม. ขอบคุณที่ร่วมรักษ์โลกครับ!</div>
+                            <div class="line-message user">เช็คยอด</div>
+                            <div class="line-message bot">ยอดสะสมของคุณตอนนี้ 1500 แต้ม มีขยะสะสมรวม 30 กก. ครับ</div>
+                        </div>
+                        <div class="line-input-area">
+                            <div class="line-button">แจ้งขยะ</div>
+                            <div class="line-button">เช็คยอด</div>
+                            <div class="line-button">โปรโมชั่น</div>
+                        </div>
+                    </div>
+                </div>
+                <p>ภาพจำลอง: หน้าจอ Line OA สำหรับสมาชิกธนาคารขยะ</p>
+            </div>
+        </div>
+
+        <div class="ui-mockup-section">
+            <h4>Waste Bank Dashboard (สำหรับผู้ดูแลระบบ)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-chart-line"></i> Waste Bank Admin Dashboard</span>
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="ui-content">
+                    <p><strong>สมาชิกทั้งหมด:</strong> 150 คน | <strong>ยอดขยะสะสมรวม:</strong> 1,200 กก.</p>
+                    <hr>
+                    <p><strong>สรุปประเภทขยะที่รวบรวมได้ (สัปดาห์ล่าสุด):</strong></p>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+                        <div class="pie-chart-container"></div>
+                        <ul class="pie-legend">
+                            <li><span class="pie-legend-color" style="background-color: #3498db;"></span> พลาสติก (40%)</li>
+                            <li><span class="pie-legend-color" style="background-color: #2ecc71;"></span> กระดาษ (30%)</li>
+                            <li><span class="pie-legend-color" style="background-color: #e67e22;"></span> แก้ว (15%)</li>
+                            <li><span class="pie-legend-color" style="background-color: #9b59b6;"></span> โลหะ (10%)</li>
+                            <li><span class="pie-legend-color" style="background-color: #f1c40f;"></span> อื่นๆ (5%)</li>
+                        </ul>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ประเภทขยะ</th>
+                                <th>ปริมาณ (กก.)</th>
+                                <th>สัดส่วน (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>พลาสติก</td><td>480</td><td>40%</td></tr>
+                            <tr><td>กระดาษ</td><td>360</td><td>30%</td></tr>
+                            <tr><td>แก้ว</td><td>180</td><td>15%</td></tr>
+                            <tr><td>โลหะ</td><td>120</td><td>10%</td></tr>
+                            <tr><td>อื่นๆ</td><td>60</td><td>5%</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="placeholder-text" style="margin-top:20px;">แสดงผลผ่าน AppSheet/Google Sheet Dashboard</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ui-mockup-section">
+            <h4>Automated Notification Example (ตัวอย่างการแจ้งเตือนอัตโนมัติ)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-envelope"></i> Notification Preview: Line Notify</span>
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="ui-content">
+                    <p style="background-color:#e6ffe6; padding:10px; border-radius:5px; text-align:center; font-weight:bold; color:#28a745;">
+                        <i class="fas fa-check-circle"></i> แจ้งเตือนสำเร็จ!
+                    </p>
+                    <p><strong>ถึง:</strong> คุณสมศรี รักษ์โลก</p>
+                    <p><strong>ข้อความ:</strong></p>
+                    <div style="border:1px dashed #ccc; padding:10px; border-radius:5px; background-color:#fcfcfc;">
+                        <p style="font-weight:bold; margin-bottom:5px;">สวัสดีครับคุณสมศรี!</p>
+                        <p style="margin-bottom:5px;">ขอแจ้งยอดสะสมแต้มล่าสุดของคุณในธนาคารขยะชุมชน ณ วันที่ 2025-08-01: </p>
+                        <p style="font-size:1.1em; font-weight:bold; color:#2874a6;">ยอดแต้มสะสม: 1500 แต้ม</p>
+                        <p style="font-size:0.9em; color:#777;">สามารถนำแต้มมาแลกรางวัลได้แล้ววันนี้!</p>
+                    </div>
+                    <p class="placeholder-text" style="margin-top:20px;">ดำเนินการโดย n8n Automation</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function sendHeightToParent() {
+            const body = document.body;
+            const height = body.scrollHeight; 
+            if (window.parent && window.parent.postMessage) {
+                window.parent.postMessage({ 
+                    type: 'iframeHeight', 
+                    height: height, 
+                    iframeId: window.name 
+                }, '*'); 
+            }
+        }
+        window.addEventListener('load', sendHeightToParent);
+        window.addEventListener('resize', sendHeightToParent);
+        setTimeout(sendHeightToParent, 500); // Also send after a small delay
+    </script>
+</body>
+</html>

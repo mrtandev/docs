@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project ต้นแบบ 1: Loyverse & vTiger AI Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 25px; /* Padding for the body of this iframe content */
+            background-color: #f8f9fa; /* Light background for the overall prototype page */
+        }
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: #e67e22; /* Orange accent for main prototype title */
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            color: #34495e;
+            text-align: left;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+        p {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        .section-description {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .feature-card {
+            background-color: #e8f5e9; /* Light green for this project's features */
+            border: 1px solid #a5d6a7;
+            border-left: 5px solid #28a745;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .feature-card i {
+            font-size: 2.5em;
+            color: #28a745; /* Green for icons */
+            flex-shrink: 0;
+        }
+        .feature-card .text-content strong {
+            display: block;
+            font-size: 1.1em;
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+        .feature-card .text-content p {
+            font-size: 0.85em;
+            color: #555;
+            margin: 0;
+        }
+
+        /* --- UI Mockup Styles (consistent with previous phases) --- */
+        .ui-mockup-section {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .ui-mockup-section:nth-of-type(odd) { background-color: #eef4f7; }
+        .ui-mockup-section:nth-of-type(even) { background-color: #f8f8f8; }
+
+        .ui-mockup-box {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .ui-header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+        }
+        .ui-header .app-name {
+            font-size: 1.2em;
+        }
+        .ui-content {
+            padding: 15px;
+            min-height: 150px;
+            color: #555;
+            font-size: 0.95em;
+        }
+        .ui-content strong {
+            color: #333;
+        }
+        .ui-content .data-row {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        .ui-content .data-row:last-child {
+            border-bottom: none;
+        }
+        .ui-content .placeholder-text {
+            color: #777;
+            font-style: italic;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .ui-content .chart-placeholder { /* For simple chart representation */
+            height: 100px;
+            background-color: #f8f8f8;
+            border: 1px dashed #ccc;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: #aaa;
+            font-size: 0.9em;
+            margin: 10px auto;
+        }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: 600; }
+        .stock-level { font-weight: bold; color: #28a745; }
+        .low-stock { color: #dc3545; }
+
+        /* --- Camera Feed HTML Mockup Styles --- */
+        .camera-feed-html {
+            width: 100%;
+            height: 250px; /* Consistent height for camera view */
+            background-color: #1a1a1a; /* Dark background to simulate camera feed */
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .camera-feed-html .feed-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #eee;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+        .camera-feed-html .feed-status-bar {
+            width: 100%;
+            background-color: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 0.8em;
+            padding: 5px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .camera-feed-html .detection-overlay {
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 60%;
+            height: 60%;
+            border: 3px solid #00ff00; /* Green bounding box */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff00;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .camera-feed-html .low-stock-overlay {
+            background-color: rgba(220,53,69,0.7); /* Red overlay for low stock */
+            border-color: #dc3545;
+            font-size: 1.8em;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+        .camera-feed-html .heatmap-overlay {
+            background: radial-gradient(circle at center, rgba(255,0,0,0.5) 0%, rgba(255,255,0,0.3) 50%, rgba(0,0,255,0.1) 100%);
+            border: none;
+        }
+        .camera-feed-html .loyverse-pos-mockup {
+            background-color: #28a745; /* Loyverse Green */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
+            font-size: 1.1em;
+        }
+        .camera-feed-html .pos-header-line {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .camera-feed-html .pos-main-content {
+            flex-grow: 1;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .camera-feed-html .pos-main-content .item {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            padding: 5px 0;
+        }
+        .camera-feed-html .pos-total {
+            margin-top: 15px;
+            font-size: 1.3em;
+        }
+        .camera-feed-html .pos-footer-line {
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
+            margin-top: 10px;
+            padding-top: 5px;
+            border-top: 1px solid rgba(255,255,255,0.5);
+        }
+
+        /* --- Chart specific styles for project_prototype_1.html --- */
+        .chart-container-html {
+            width: 100%;
+            height: 150px; /* Consistent height for charts */
+            background-color: #fcfcfc;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+            overflow: hidden;
+            margin: 10px auto;
+        }
+        .chart-line-point-html {
+            position: absolute;
+            width: 10px; height: 10px;
+            background-color: #e67e22; /* Orange point */
+            border-radius: 50%;
+            transform: translateX(-50%) translateY(50%);
+            z-index: 10;
+        }
+        .chart-line-point-html::before { /* Value label */
+            content: attr(data-value);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7em;
+            color: #333;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .chart-line-point-html::after { /* X-axis label */
+            content: attr(data-label);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7em;
+            color: #777;
+            white-space: nowrap;
+        }
+        .chart-line-segment-html {
+            position: absolute;
+            height: 2px;
+            background-color: #3498db; /* Blue line */
+            transform-origin: 0 0;
+            z-index: 8;
+        }
+        /* Heatmap Grid HTML */
+        .heatmap-grid-html {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 columns for a simple grid */
+            width: 100%;
+            height: 150px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            gap: 1px;
+        }
+        .heatmap-cell-html {
+            background-color: rgba(255,255,255,0.8); /* Low traffic */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            color: #555;
+            text-align: center;
+            padding: 5px;
+        }
+        .heatmap-cell-html.low { background-color: #e6ffe6; } /* Green - low */
+        .heatmap-cell-html.medium { background-color: #fffbe6; } /* Yellow - medium */
+        .heatmap-cell-html.high { background-color: #ffe6e6; } /* Red - high */
+    </style>
+</head>
+<body>
+    <div class="phase-section">
+        <h3><i class="fas fa-microchip"></i> Project ต้นแบบ 1: สุดยอดระบบจัดการ Loyverse & vTiger อัจฉริยะ</h3>
+        <p class="section-description">
+            โครงการนี้แสดงถึงการผสานเทคโนโลยี AI Automation และ Camera AI เข้ากับระบบ Loyverse และ vTiger CRM ที่มีอยู่
+            เพื่อยกระดับการบริหารจัดการธุรกิจให้ฉลาดและมีประสิทธิภาพสูงสุด.
+        </p>
+
+        <h4><i class="fas fa-magic"></i> ฟังก์ชันการทำงานหลัก (Features)</h4>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-boxes"></i>
+                <div class="text-content">
+                    <strong>AI-Powered Inventory</strong>
+                    <p>Camera AI ตรวจสอบปริมาณสินค้าบนชั้นวาง อัปเดตสต็อกใน Loyverse/vTiger อัตโนมัติ พร้อมแจ้งเตือนเมื่อสินค้าสต็อกต่ำ.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users-viewfinder"></i>
+                <div class="text-content">
+                    <strong>Customer Behavior Analytics</strong>
+                    <p>AI Camera นับจำนวนลูกค้าเข้า-ออกร้าน และวิเคราะห์เส้นทางการเดินของลูกค้า เพื่อปรับปรุง Layout ร้านและแคมเปญการตลาด.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-gift"></i>
+                <div class="text-content">
+                    <strong>Personalized Promotions</strong>
+                    <p>AI แจ้งพนักงาน Loyverse POS ให้ออกโปรโมชั่นพิเศษเฉพาะบุคคล เมื่อลูกค้า VIP (จาก vTiger) เข้ามาในร้าน.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <div class="text-content">
+                    <strong>AI Sales Prediction</strong>
+                    <p>วิเคราะห์ข้อมูลการขายย้อนหลังจาก Loyverse/vTiger เพื่อทำนายแนวโน้มยอดขายในอนาคต แสดงผลบน AppSheet Dashboard.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-wrench"></i>
+                <div class="text-content">
+                    <strong>Automated Error Resolution</strong>
+                    <p>เมื่อ Loyverse-vTiger Sync เกิด Error, n8n จะพยายาม Retry อัตโนมัติ หรือส่งแจ้งเตือนละเอียดไปยังผู้ดูแล.</p>
+                </div>
+            </div>
+        </div>
+
+        <h4><i class="fas fa-bezier-curve"></i> ตัวอย่างหน้าจอ UI</h4>
+
+        <div class="ui-mockup-section">
+            <h4>AI-Powered Inventory (ระบบจัดการสต็อกอัจฉริยะ)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-video"></i> Camera AI: Shelf Monitor</span>
+                    <i class="fas fa-circle" style="color: #28a745; font-size: 0.6em;"></i> Live
+                </div>
+                <div class="camera-feed-html" style="background-color: #34495e;">
+                    <div class="detection-overlay low-stock-overlay">Low Stock Detected: Product A</div>
+                    <div class="feed-content">
+                        <i class="fas fa-boxes fa-3x" style="color:rgba(255,255,255,0.7);"></i>
+                        <br>Shelf Monitoring Active
+                    </div>
+                    <div class="feed-status-bar">
+                        <span>AI Model: v1.2 | FPS: 25</span>
+                        <span>Zone: Shelf 1 | <i class="fas fa-circle" style="color:#dc3545;"></i> Alert</span>
+                    </div>
+                </div>
+                <div class="ui-content">
+                    <p><strong>สถานะการตรวจจับ:</strong> <span style="color:#dc3545; font-weight: bold;">สินค้า A เหลือน้อยกว่า 10 ชิ้น</span></p>
+                    <p><strong>ดำเนินการ:</strong> ส่งแจ้งเตือนไปยังผู้จัดการคลังสินค้า, อัปเดตสต็อกใน vTiger/Loyverse</p>
+                </div>
+            </div>
+
+            <div class="ui-mockup-box" style="margin-top:30px;">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-boxes"></i> vTiger CRM: รายละเอียดสินค้า (อัปเดตจาก AI)</span>
+                    <i class="fas fa-edit"></i>
+                </div>
+                <div class="ui-content">
+                    <div class="data-row"><span>รหัสสินค้า:</span><span>P-001</span></div>
+                    <div class="data-row"><span>ชื่อสินค้า:</span><span>กาแฟสดเม็ด</span></div>
+                    <div class="data-row"><span><strong>จำนวนในสต็อก:</strong></span><span class="stock-level" style="color:#dc3545;">เหลือ 8 หน่วย (อัปเดตจาก AI)</span></div>
+                    <div class="data-row"><span>สถานะ:</span><span style="color:#dc3545;">สต็อกต่ำ!</span></div>
+                    <p class="placeholder-text">ข้อมูลอัปเดตอัตโนมัติจาก Camera AI และ n8n</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-mockup-section">
+            <h4>Customer Behavior Analytics (การวิเคราะห์พฤติกรรมลูกค้า)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-users-viewfinder"></i> Camera AI: Store Traffic</span>
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="camera-feed-html" style="background-color:#3498db;">
+                    <div class="feed-content" style="position:relative;">
+                        <i class="fas fa-store-alt fa-3x" style="color:rgba(255,255,255,0.7);"></i>
+                        <br>Customer Path Analysis
+                        <div class="heatmap-grid-html" style="position:absolute; top:20px; left:20px; right:20px; bottom:20px; border:none; gap:2px; height:auto;">
+                            <div class="heatmap-cell-html high">Entrance</div>
+                            <div class="heatmap-cell-html medium">Food</div>
+                            <div class="heatmap-cell-html high">Drinks</div>
+                            <div class="heatmap-cell-html low">Exit</div>
+                            <div class="heatmap-cell-html low">Restroom</div>
+                            <div class="heatmap-cell-html medium">Checkout</div>
+                            <div class="heatmap-cell-html low">Aisle 1</div>
+                            <div class="heatmap-cell-html low">Aisle 2</div>
+                            <div class="heatmap-cell-html medium">Special Offer</div>
+                            <div class="heatmap-cell-html low">Corner</div>
+                            <div class="heatmap-cell-html high">Impulse Buy</div>
+                            <div class="heatmap-cell-html medium">Service Desk</div>
+                            <div class="heatmap-cell-html low">Storage</div>
+                            <div class="heatmap-cell-html low">Back Office</div>
+                            <div class="heatmap-cell-html low">Staff Only</div>
+                        </div>
+                    </div>
+                    <div class="feed-status-bar">
+                        <span>Zone: Entrance | AI Model: Traffic v1.0</span>
+                        <span><i class="fas fa-chart-bar" style="color:white;"></i> Analyzed</span>
+                    </div>
+                </div>
+                <div class="ui-content">
+                    <p><strong>จำนวนลูกค้าเข้า-ออก:</strong> 120 คน/ชม. (โดย AI)</p>
+                    <p><strong>โซนยอดนิยม:</strong> โซนเครื่องดื่ม (Heatmap Analysis)</p>
+                    <p class="placeholder-text">ข้อมูลส่งไป vTiger CRM และ AppSheet Dashboard</p>
+                </div>
+            </div>
+            <div class="ui-mockup-box" style="margin-top:30px;">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-chart-bar"></i> AppSheet: Customer Traffic Dashboard</span>
+                    <i class="fas fa-map"></i>
+                </div>
+                <div class="ui-content">
+                    <p><strong>Conversion Rate (วันนี้):</strong> <span style="font-weight: bold; color: #28a745;">15%</span></p>
+                    <p><strong>เส้นทางเดินลูกค้า (Heatmap จำลอง):</strong></p>
+                    <div class="chart-container-html" style="height:150px;">
+                        <div class="heatmap-grid-html" style="height:100%;">
+                            <div class="heatmap-cell-html high">Entrance (80%)</div>
+                            <div class="heatmap-cell-html medium">Food (50%)</div>
+                            <div class="heatmap-cell-html high">Drinks (75%)</div>
+                            <div class="heatmap-cell-html low">Exit (30%)</div>
+                            <div class="heatmap-cell-html low">Restroom (10%)</div>
+                            <div class="heatmap-cell-html medium">Checkout (60%)</div>
+                            <div class="heatmap-cell-html low">Aisle 1 (20%)</div>
+                            <div class="heatmap-cell-html low">Aisle 2 (15%)</div>
+                            <div class="heatmap-cell-html medium">Special Offer (55%)</div>
+                            <div class="heatmap-cell-html low">Corner (5%)</div>
+                            <div class="heatmap-cell-html high">Impulse Buy (70%)</div>
+                            <div class="heatmap-cell-html medium">Service Desk (45%)</div>
+                            <div class="heatmap-cell-html low">Storage (0%)</div>
+                            <div class="heatmap-cell-html low">Back Office (0%)</div>
+                            <div class="heatmap-cell-html low">Staff Only (0%)</div>
+                        </div>
+                    </div>
+                    <p class="placeholder-text">รายงานละเอียดใน AppSheet Dashboard</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-mockup-section">
+            <h4>Personalized Promotions (โปรโมชั่นเฉพาะบุคคล)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-id-badge"></i> Loyverse POS: Customer Alert</span>
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="ui-content">
+                    <div class="camera-feed-html" style="height:180px; background-color:#28a745; padding:0;">
+                        <div class="loyverse-pos-mockup">
+                            <div class="pos-header-line">
+                                <span><i class="fas fa-user-tag"></i> ลูกค้า VIP</span>
+                                <span>ยอดรวม: 250 บ.</span>
+                            </div>
+                            <div class="pos-main-content">
+                                <i class="fas fa-bell fa-3x" style="color:white; margin-bottom:10px;"></i>
+                                <div style="font-size:1.2em; font-weight:bold;">ลูกค้า VIP เข้ามา!</div>
+                                <div style="font-size:1.0em; margin-top:5px;">คุณสมหญิง ใจดี</div>
+                                <div style="font-size:0.9em; margin-top:10px; padding:5px 10px; background-color:rgba(255,255,255,0.2); border-radius:5px;">
+                                    แนะนำ: ลด 10% กาแฟสดเม็ด
+                                </div>
+                            </div>
+                            <div class="pos-footer-line">Loyverse POS v2.10</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-mockup-section">
+            <h4>AI Sales Prediction (การทำนายยอดขายด้วย AI)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-chart-line"></i> AppSheet: Sales Prediction</span>
+                    <i class="fas fa-magic"></i>
+                </div>
+                <div class="ui-content">
+                    <p><strong>ยอดขายที่คาดการณ์ (เดือนหน้า):</strong> <span style="color:#28a745; font-weight: bold;">150,000 บาท</span></p>
+                    <p><strong>สินค้าที่คาดว่าจะขายดี:</strong> กาแฟสดเม็ด (+20%), ชาเขียวมัทฉะ (+15%)</p>
+                    <div class="chart-container-html" style="height:150px;">
+                        <div class="chart-line-point-html" style="left: 10%; bottom: 40px;" data-value="100K" data-label="Q1"></div>
+                        <div class="chart-line-point-html" style="left: 30%; bottom: 60px;" data-value="120K" data-label="Q2"></div>
+                        <div class="chart-line-point-html" style="left: 50%; bottom: 90px;" data-value="150K" data-label="Q3"></div>
+                        <div class="chart-line-point-html" style="left: 70%; bottom: 120px;" data-value="180K" data-label="Q4"></div>
+                        <div class="chart-line-point-html" style="left: 90%; bottom: 140px;" data-value="200K" data-label="Q1(F)"></div>
+
+                        <div class="chart-line-segment-html" style="left: 10%; top: calc(150px - 40px - 1px); width: 20%; transform: rotate(10deg);"></div> 
+                        <div class="chart-line-segment-html" style="left: 30%; top: calc(150px - 60px - 1px); width: 20%; transform: rotate(15deg);"></div>
+                        <div class="chart-line-segment-html" style="left: 50%; top: calc(150px - 90px - 1px); width: 20%; transform: rotate(15deg);"></div>
+                        <div class="chart-line-segment-html" style="left: 70%; top: calc(150px - 120px - 1px); width: 20%; transform: rotate(10deg);"></div>
+                        <p style="position:absolute; bottom:5px; width:100%; text-align:center; font-size:0.8em; color:#777;">(F) = Forecast</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-mockup-section">
+            <h4>Automated Error Resolution (ระบบแก้ไขข้อผิดพลาดอัตโนมัติ)</h4>
+            <div class="ui-mockup-box">
+                <div class="ui-header">
+                    <span class="app-name"><i class="fas fa-code-branch"></i> n8n: Sync Error Workflow</span>
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="ui-content" style="min-height:200px;">
+                    <div class="workflow-diagram-html" style="height:150px; background-color:#f7dc6f;">
+                        <div class="workflow-node" style="background-color:#00bcd4;">Error Trigger (API)</div>
+                        <i class="fas fa-arrow-down workflow-arrow"></i>
+                        <div class="workflow-node" style="background-color:#8e44ad;">Retry Logic</div>
+                        <i class="fas fa-arrow-down workflow-arrow"></i>
+                        <div class="workflow-node" style="background-color:#3498db;">Log / Notify Admin</div>
+                    </div>
+                    <div class="status-box">
+                        <strong>สถานะ:</strong> <span style="color:#e67e22; font-weight: bold;">ตรวจพบข้อผิดพลาด Loyverse API</span>
+                        <br><strong>ดำเนินการ:</strong> <span style="color:#28a745; font-weight: bold;">พยายาม Retry อัตโนมัติ... (สำเร็จ)</span>
+                        <br><strong>แจ้งเตือน:</strong> <span style="color:#dc3545; font-weight: bold;">ส่ง Email แจ้งผู้ดูแล (หาก Retry ล้มเหลว)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function sendHeightToParent() {
+            const body = document.body;
+            const height = body.scrollHeight; 
+            if (window.parent && window.parent.postMessage) {
+                window.parent.postMessage({ 
+                    type: 'iframeHeight', 
+                    height: height, 
+                    iframeId: window.name 
+                }, '*'); 
+            }
+        }
+        window.addEventListener('load', sendHeightToParent);
+        window.addEventListener('resize', sendHeightToParent);
+        setTimeout(sendHeightToParent, 500); // Also send after a small delay
+    </script>
+</body>
+</html>
