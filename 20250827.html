@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หลักสูตร AI Business Automation & Smart Vision for Enterprise Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background: #f0f4f8;
+            color: #333;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #4F46E5, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        
+        .card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-container {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            background-color: #4F46E5;
+            border-radius: 9999px;
+        }
+
+        .timeline-dot.checked {
+            background-color: #22c55e;
+        }
+    </style>
+</head>
+
+<body class="p-6 md:p-12">
+    <!-- Header -->
+    <header class="text-center mb-12">
+        <div class="flex items-center justify-center mb-4">
+            <div class="relative w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg mr-4">
+                <img src="https://profile.line-scdn.net/0h0eGDNw66b0pqPX4GcyERNRptbCBJTDZYT190LFluMi9eCyscRwgpL1g_OHpWCHhIEghzeAhqYnNmLhgsdGuTfm0NMntWCy0aQ14hrA"
+                    alt="อาจารย์แทน" class="w-full h-full object-cover">
+            </div>
+            <div class="text-left">
+                <h1 class="text-3xl font-bold gradient-text">อ.แทน [ธีรชัย โฉมทัพ]</h1>
+                <p class="text-lg text-gray-600 mt-1">Head of Digital Transformation</p>
+            </div>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-2">
+            หลักสูตร <span class="gradient-text">AI Business Automation & Smart Vision</span>
+        </h2>
+        <h3 class="text-2xl font-semibold text-gray-600">สำหรับธุรกิจ SMEs ไทย</h3>
+    </header>
+
+    <!-- Main Content -->
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- หลักสูตร 1 (ปรับปรุงใหม่) -->
+        <section class="card p-8">
+            <div class="flex items-center mb-6">
+                <div class="icon-container bg-blue-100 text-blue-600">
+                    <i class="fas fa-brain text-2xl"></i>
+                </div>
+                <h3 class="text-3xl font-bold ml-4">หลักสูตร 1: <span class="gradient-text">AI Automation & Data Integration Master</span></h3>
+            </div>
+            
+            <!-- Day 1 -->
+            <div class="mb-8">
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">🗓️ วันที่ 1: Fundamental of Business Process & n8n Basics</h4>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d1-1" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d1-1" class="text-gray-700">ภาพรวมและ Pain Points ของธุรกิจ SMEs</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d1-2" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d1-2" class="text-gray-700">แนะนำแนวคิด Workflow Automation และการทำงานของ n8n</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d1-3" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d1-3" class="text-gray-700">การติดตั้งและใช้งาน n8n (On-premise/Cloud)</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d1-4" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d1-4" class="text-gray-700">ทำความเข้าใจ Node และ Data Flow พื้นฐาน</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="mb-8">
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">🗓️ วันที่ 2: Data Integration with n8n (Loyverse & vTiger)</h4>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d2-1" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d2-1" class="text-gray-700">การเชื่อมต่อ n8n กับ Loyverse และ vTiger CRM (Authentication)</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d2-2" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d2-2" class="text-gray-700">Workshop: สร้าง Workflow ซิงค์ข้อมูล One-way (จาก Loyverse ไป vTiger)</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d2-3" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d2-3" class="text-gray-700">การจัดการข้อมูล: การกรอง, การแปลงข้อมูล และการรวมข้อมูลด้วย n8n</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 3 -->
+            <div class="mb-8">
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">🗓️ วันที่ 3: Advanced n8n Workflow & Automation</h4>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d3-1" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d3-1" class="text-gray-700">การสร้าง Workflow ที่ซับซ้อน: การใช้ If/Else และ Loop</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d3-2" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d3-2" class="text-gray-700">การใช้งาน Webhook และ Scheduler Trigger</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d3-3" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d3-3" class="text-gray-700">Workshop: สร้างระบบแจ้งเตือน 'พรายกระซิบยามเช้า' ด้วย n8n</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="mb-8">
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">🗓️ วันที่ 4: AppSheet for Data Management & Reporting</h4>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d4-1" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d4-1" class="text-gray-700">ออกแบบ AppSheet Application เพื่อจัดการข้อมูล (CRUD)</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d4-2" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d4-2" class="text-gray-700">สร้าง Dashboard และ Report ที่ซับซ้อนจากข้อมูล Loyverse/vTiger</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d4-3" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d4-3" class="text-gray-700">Hands-on: สร้าง Dashboard วิเคราะห์ยอดขายและพฤติกรรมลูกค้า</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 (ปรับปรุงใหม่) -->
+            <div class="mb-8">
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">🗓️ วันที่ 5: Project Integration & Hackathon</h4>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d5-1" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d5-1" class="text-gray-700">นำเสนอและอธิบาย Project ต้นแบบด้าน Automation (Project 1, 3, 4)</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d5-2" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d5-2" class="text-gray-700">Hands-on: ทดลองใช้งานและปรับปรุง Workflow ใน Project ต้นแบบที่ได้รับ</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d5-3" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d5-3" class="text-gray-700">กิจกรรม Hackathon: ปรับปรุง Project ต้นแบบเพื่อแก้ปัญหาทางธุรกิจของตนเอง</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c1-d5-4" class="form-checkbox h-5 w-5 text-blue-600 mr-2 rounded">
+                        <label for="c1-d5-4" class="text-gray-700">สรุปผลงานและวางแผนการต่อยอดในอนาคต</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- หลักสูตร 2 -->
+        <section class="card p-8">
+            <div class="flex items-center mb-6">
+                <div class="icon-container bg-purple-100 text-purple-600">
+                    <i class="fas fa-video text-2xl"></i>
+                </div>
+                <h3 class="text-3xl font-bold ml-4">หลักสูตร 2: <span class="gradient-text">Smart Vision & AI Camera Deployment</span></h3>
+            </div>
+            
+            <!-- Day 1 -->
+            <div class="mb-8">
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">🗓️ วันที่ 1: Introduction to AI Camera & Computer Vision</h4>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d1-1" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d1-1" class="text-gray-700">แนวคิด Camera AI, ML, DL และประเภทของงาน Computer Vision</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d1-2" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d1-2" class="text-gray-700">แนะนำเครื่องมือ No-Code สำหรับ Model Training (Teachable Machine)</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d1-3" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d1-3" class="text-gray-700">แนะนำ Hardware: กล้อง CCTV, Web Camera, Edge Devices</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="mb-8">
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">🗓️ วันที่ 2: Hands-on AI Model Training</h4>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d2-1" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d2-1" class="text-gray-700">การรวบรวมและจัดเตรียมข้อมูล (ภาพ/วิดีโอ) สำหรับการ Train AI</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d2-2" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d2-2" class="text-gray-700">การฝึกฝน AI Model (Object Detection) ด้วย Teachable Machine</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d2-3" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d2-3" class="text-gray-700">Hands-on: สร้างโมเดลนับวัตถุเคลื่อนไหว</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 3 -->
+            <div class="mb-8">
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">🗓️ วันที่ 3: Edge AI & Deployment</h4>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d3-1" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d3-1" class="text-gray-700">หลักการทำงานของ Edge AI และการเลือกใช้ Edge Device</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d3-2" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d3-2" class="text-gray-700">การ Deploy AI Model บน Edge Device (Raspberry Pi)</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d3-3" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d3-3" class="text-gray-700">Hands-on: ทดสอบการทำงานของโมเดลบน Raspberry Pi</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="mb-8">
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">🗓️ วันที่ 4: Integration & AI Automation with n8n</h4>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d4-1" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d4-1" class="text-gray-700">การเชื่อมต่อ AI Camera (Edge Device) กับ n8n</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d4-2" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d4-2" class="text-gray-700">สร้าง Workflow อัตโนมัติจากผลลัพธ์ของ AI (API/Webhook)</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d4-3" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d4-3" class="text-gray-700">Hands-on: สร้างระบบอัปเดตสต็อกใน Loyverse จาก Camera AI</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 (ปรับปรุงใหม่) -->
+            <div class="mb-8">
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">🗓️ วันที่ 5: Project Integration & Hackathon</h4>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d5-1" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d5-1" class="text-gray-700">นำเสนอและอธิบาย Project ต้นแบบด้าน Camera AI (Project 2, 5)</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d5-2" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d5-2" class="text-gray-700">Hands-on: ทดลองใช้งานและปรับปรุงโมเดล AI ใน Project ต้นแบบที่ได้รับ</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d5-3" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d5-3" class="text-gray-700">กิจกรรม Hackathon: ปรับปรุง Project ต้นแบบเพื่อแก้ปัญหาทางธุรกิจของตนเอง</label>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="c2-d5-4" class="form-checkbox h-5 w-5 text-purple-600 mr-2 rounded">
+                        <label for="c2-d5-4" class="text-gray-700">สรุปผลงานและวางแผนการต่อยอดในอนาคต</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- References Section (Updated) -->
+    <section class="mt-12 text-center">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">อ้างอิง</h3>
+        <div class="flex justify-center items-center space-x-8">
+            <a href="https://www.thaieei.com/" target="_blank" class="inline-block transition-transform transform hover:scale-105">
+                <img src="https://www.thaieei.com/wp-content/uploads/2023/03/IMG_5825-768x136.png" alt="โลโก้ Thai EEI" class="h-16 mx-auto mb-2">
+                <span class="text-blue-600 font-semibold hover:underline">Thai EEI</span>
+            </a>
+            <a href="https://idea.ass.in.th" target="_blank" class="inline-block transition-transform transform hover:scale-105">
+                <img src="https://idea.ass.in.th/assets/idea-logo.png" alt="โลโก้ IDEA" class="h-16 mx-auto mb-2">
+                <span class="text-purple-600 font-semibold hover:underline">IDEA</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-gray-500 text-sm">
+        <p>เอกสารประกอบการสอนนี้จัดทำขึ้นโดย อ.แทน [ธีรชัย โฉมทัพ] และทีมงาน</p>
+        <p class="mt-2">เรามาช่วยกันสร้างธุรกิจให้ฉลาดและมีประสิทธิภาพกันนะครับ! 👨‍💻💡</p>
+    </footer>
+</body>
+
+</html>
